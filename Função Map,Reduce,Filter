@@ -1,0 +1,144 @@
+//FUNÇÃO: FILTER //
+const pets = [
+{
+   name: 'rex',
+   type: 'dog',
+   age: 10
+},
+{
+   name: 'luck',
+   type: 'cat',
+   age: 2
+},
+{
+   name: 'gulp',
+   type: 'fish',
+   age: 1
+}
+]
+
+const newPets = pets.filter((pet) =>{
+   return pet.age < 5 // Filtrar o array Pets com animais de menos de 5 anos //
+})
+
+console.log(newPets)
+
+console.log(pets)
+
+//FUNÇÃO: MAP//  //Retorna um novo array com a mesma quantidade de elementos que o array inicial //
+const pets = [
+    {
+       name: 'rex',
+       type: 'dog',
+       age: 4,
+       weight: 5
+    },
+    {
+       name: 'mingal',
+       type: 'cat',
+       age: 6,
+       weight: 2
+    },
+    {
+       name: 'gulp',
+       type: 'fish',
+       age: 1,
+       weight: 0.01
+    },
+    {
+        name: 'bolinha',
+        type: 'dog',
+        age: 15,
+        weight: 30
+    },
+    {
+        name: 'marrom',
+        type: 'cat',
+        age: 2,
+        weight: 1
+    },
+    {
+        name: 'horse',
+        type: 'pé de pano',
+        age: 1,
+        weight: 100
+    }
+    ]
+
+const petNames = pets.map((pet) => {
+    return pet.name
+})
+
+
+console.log(petNames)
+
+
+console.log(pets)
+
+//FUNÇÃO: REDUCE //
+const pets = [
+    {
+       name: 'rex',
+       type: 'dog',
+       age: 4,
+       weight: 5
+    },
+    {
+       name: 'mingal',
+       type: 'cat',
+       age: 6,
+       weight: 2
+    },
+    {
+       name: 'gulp',
+       type: 'fish',
+       age: 1,
+       weight: 0.01
+    },
+    {
+        name: 'bolinha',
+        type: 'dog',
+        age: 15,
+        weight: 30
+    },
+    {
+        name: 'marrom',
+        type: 'cat',
+        age: 2,
+        weight: 1
+    },
+    {
+        name: 'horse',
+        type: 'pé de pano',
+        age: 1,
+        weight: 100
+    }
+    ]
+
+//Quero somar o pesso de todos os animais juntos//
+const totalWeight = pets.reduce((total, pet) =>{ //O primairo valor do callback é o valor acumulado(total) e p segundo é o item que está sendo interado(pet)//
+   return total + pet.weight
+}, 0) // Obrigatorio botar esse 0 para o return
+
+console.log(totalWeight)
+
+
+// Quero somar somente o pesso dos cachorros //
+const totalWeight = pets.reduce((total, pet) =>{ 
+    if(pet.type !== 'dog') return total //Se o type não for cachorro , então retorna o total(pula para o proximo)//
+    return total + pet.weight
+}, 0)
+console.log(totalWeight)   
+
+
+
+// Encadeando as funções //
+
+const totalWeightDogs = pets
+    .filter((pet)=>{
+        return pet.type === 'dog'
+    })
+    .reduce((total, pet)=>{
+        return total + pet.weight
+    }, 0)
+console.log (totalWeightDogs)    
